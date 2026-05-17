@@ -1,21 +1,32 @@
 import Navbar from "../components/Navbar"
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
 
 function SingleBlog() {
-    const data = useParams()
+    const { id } = useParams()
+    const navigate = useNavigate()
     const [blog, setBlog] = useState({})
-    console.log(data)
+    //console.log(id)
     const fetchsingleBlog = async() => {
-        const response =await axios.get(`http://localhost:3000/blog/${data.id}`)
+        const response =await axios.get(`http://localhost:3000/blog/${id}`)
         setBlog(response.data.data)
     };
 
     useEffect(()=>{
         fetchsingleBlog()
     },[])
+
+    const deleteFunction = async() => {
+        const response = await axios.delete(`http://localhost:3000/blog/${id}`)
+            if(response.status === 200){
+                alert('Blog Deleted')
+                navigate('/')
+            }else{
+                alert('Error Deleting Blog')
+            }
+    }
     return (
         <>
             <Navbar />
@@ -31,7 +42,7 @@ function SingleBlog() {
                         <button className="w-full bg-gray-900 dark:bg-gray-600 text-white py-2 px-4 rounded-full font-bold hover:bg-gray-800 dark:hover:bg-gray-700">Edit Me</button>
                     </div>
                     <div className="w-1/2 px-2">
-                        <button className="w-full bg-gray-200 dark:bg-red-700 text-gray-800 dark:text-white py-2 px-4 rounded-full font-bold hover:bg-gray-300 dark:hover:bg-gray-600">Delete Me</button>
+                        <button className="w-full bg-gray-200 dark:bg-red-700 text-gray-800 dark:text-white py-2 px-4 rounded-full font-bold hover:bg-gray-300 dark:hover:bg-gray-600" onClick={deleteFunction}>Delete Me</button>
                     </div>
                 </div>
             </div>
