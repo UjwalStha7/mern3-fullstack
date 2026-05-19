@@ -22,7 +22,7 @@ function EditBlog() {
 
     const editBlog = async (e) => {
         e.preventDefault() 
-        const response = await axios.patch('https://mern3-project.onrender.com//blog/' + id, data, {
+        const response = await axios.patch('https://mern3-project.onrender.com/blog/' + id, data, {
             headers: {
                 "Content-Type": "multipart/form-data"
             }
