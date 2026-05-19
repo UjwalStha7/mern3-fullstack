@@ -9,7 +9,7 @@ function Navbar() {
   <div className="maxWScreen-xl flex flex-wrap items-center justify-between mx-auto p-4">
 
     <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-      <img src="/public/logo.png" className="h-7" alt="Diary Logo" />
+      <img src="/logo.png" className="h-7" alt="Diary Logo" />
       <span className="self-center text-xl text-heading font-semibold whitespace-nowrap">Dev Diary</span>
     </Link>
 
