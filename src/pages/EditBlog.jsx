@@ -35,7 +35,7 @@ function EditBlog() {
     }
 
     const fetchsingleBlog = async() => {
-        const response =await axios.get(`https://mern3-project.onrender.com//blog/${id}`)
+        const response =await axios.get(`https://mern3-project.onrender.com/blog/${id}`)
         if(response.status === 200){
             setData({
                 title: response.data.data.title,
